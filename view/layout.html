@@ -1,1 +1,133 @@
-<html>hello hello</html>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Raleway:300,700">
+        <title>{{file.title}}</title>
+        <style>
+             html {
+                box-sizing: border-box;
+            }
+            *, *:before, *:after {
+                margin: 0;
+                padding: 0;
+                box-sizing: inherit;
+                }
+            body {
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 300;
+                font-size: 16px;
+                line-height: 1.25;
+            }
+
+            /* ---- [ NAV ] ---------------------------------------*/
+            .page__nav {
+                flex: 0 0 12rem;
+            }
+            .page__nav-list {
+                position: sticky;
+                top: 1rem;
+                padding: 1rem 0;
+                list-style: none;
+            }
+            .page__nav-list-item {
+                margin: 0.64rem 0;
+            }
+            .page__nav-list-item a {
+                text-decoration: none;
+            }
+            .page__nav-list-item a:hover {
+                text-decoration: underline;
+            }
+
+
+            /* ---- [ HEADER ] ---------------------------------------*/
+            .page__header {
+                background-color: black;
+                color: white;
+            }
+            .page__header-brand {
+                max-width: 1024px;
+                margin: auto;
+                line-height: .7;
+            }
+
+            /* ---- [ MAIN ] ---------------------------------------*/
+            .page__main {
+                max-width: 1024px;
+                margin: auto;
+                padding: 0 1rem;
+                display: flex;
+                flex-direction: row;
+            }
+
+            @media (max-width: 760px) {
+                .page__main {
+                    display: block;
+                }
+            }
+
+            /* ---- [ FOOTER ] ---------------------------------------*/
+            .page__footer {
+                padding: 1.25rem;
+                background-color: rgb(230, 230, 230);
+            }
+            .page__footer-content {
+                max-width: 1024px;
+                margin: auto;
+            }
+
+            /* ---- [ ARTICLE ] ---------------------------------------*/
+            .article-item {
+                flex: 1;
+                padding-bottom: 4rem;
+            }
+
+            .article-item ul, .article-item ol {
+                list-style-position: outside;
+                padding-left: 1.25em;
+            }
+
+            .article-item h1 { font-size: 1.953rem; margin: 1.563rem 0 0.512rem 0; }
+            .article-item h2 { font-size: 1.563rem; margin: 1.563rem 0 0.512rem 0;  }
+            .article-item h3 { font-size: 1.25rem; margin: 1.563rem 0 0.512rem 0;  }
+            .article-item h4 { font-size: 1rem; margin: 1.563rem 0 0.512rem 0;  }
+            .article-item h5 { font-style: 0.8rem; margin: 1.563rem 0 0.512rem 0;  }
+            .article-item h6 { font-style: 0.8rem; margin: 1.563rem 0 0.512rem 0;  }
+
+            .article-item p + p {
+                margin-top: 0.512rem;
+            }
+
+            .article-item blockquote {
+                font-style: italic;
+                padding: 0 1.25rem;
+            }
+
+        </style>
+    </head>
+    <body>
+       <header class="page__header">
+            <h1 class="page__header-brand">Einar Valur</h1>
+        </header>
+        <main class="page__main">
+            <nav class="page__nav">
+                <ul class="page__nav-list">
+                    {% for file in menu %}
+                    <li class="page__nav-list-item">
+                        <a href="{{file.filename}}">{{file.title}}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+            <article class="article-item">
+                {{content|safe}}
+            </article>
+        </main>
+        <footer class="page__footer">
+            <p class="page__footer-content">
+                <a href="https://github.com/fizk">fizk</a> on Github
+            </p>
+        </footer>
+    </body>
+</html>
